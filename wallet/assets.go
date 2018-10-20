@@ -11,14 +11,16 @@ const (
 )
 
 type Asset struct {
-	AssetId   string  `json:"assetId"`
-	AssetKey  string  `json:"assetKey,omitempty"`
-	ChainId   string  `json:"chainId"`
-	Icon      string  `json:"icon"`
-	Name      string  `json:"name"`
-	Symbol    string  `json:"symbol"`
-	Balance   float64 `json:"balance"`
-	PublicKey string  `json:"publicKey,omitempty"`
+	AssetId     string  `json:"assetId"`
+	AssetKey    string  `json:"assetKey,omitempty"`
+	ChainId     string  `json:"chainId"`
+	Icon        string  `json:"icon"`
+	Name        string  `json:"name"`
+	Symbol      string  `json:"symbol"`
+	Balance     float64 `json:"balance"`
+	PublicKey   string  `json:"publicKey,omitempty"`
+	AccountName string  `json:"accountName,omitempty"`
+	AccountTag  string  `json:"accountTag,omitempty"`
 }
 
 type Assets []Asset
