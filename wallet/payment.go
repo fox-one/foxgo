@@ -34,6 +34,11 @@ type TransferRequest struct {
 func withTransfer(p request.Param, tr TransferRequest) {
 	withPayment(p, tr.PaymentRequest)
 	p.SetValue("counterUserId", tr.CounterUserId)
+
+	if tr.AssetId == EOS {
+		p.SetValue("label", tr.Memo)
+		p.SetValue("memo", nil)
+	}
 }
 
 type WithdrawRequest struct {

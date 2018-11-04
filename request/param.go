@@ -27,6 +27,10 @@ type param struct {
 }
 
 func (p param) SetValue(key string, value interface{}) {
+	if value == nil {
+		delete(p.values, key)
+	}
+
 	p.values[key] = value
 }
 
