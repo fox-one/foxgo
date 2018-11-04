@@ -21,9 +21,14 @@ func (pr *PaymentRequest) ensureTraceId() {
 func withPayment(p request.Param, pr PaymentRequest) {
 	pr.ensureTraceId()
 	p.SetValue("assetId", pr.AssetId)
-	p.SetValue("memo", pr.Memo)
 	p.SetValue("amount", pr.Amount)
 	p.SetValue("traceId", pr.TraceId)
+
+	if pr.AssetId == EOS {
+		p.SetValue("label", pr.Memo)
+	} else {
+		p.SetValue("memo", pr.Memo)
+	}
 }
 
 type TransferRequest struct {
@@ -34,11 +39,6 @@ type TransferRequest struct {
 func withTransfer(p request.Param, tr TransferRequest) {
 	withPayment(p, tr.PaymentRequest)
 	p.SetValue("counterUserId", tr.CounterUserId)
-
-	if tr.AssetId == EOS {
-		p.SetValue("label", tr.Memo)
-		p.SetValue("memo", nil)
-	}
 }
 
 type WithdrawRequest struct {
