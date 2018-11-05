@@ -23,12 +23,7 @@ func withPayment(p request.Param, pr PaymentRequest) {
 	p.SetValue("assetId", pr.AssetId)
 	p.SetValue("amount", pr.Amount)
 	p.SetValue("traceId", pr.TraceId)
-
-	if pr.AssetId == EOS {
-		p.SetValue("label", pr.Memo)
-	} else {
-		p.SetValue("memo", pr.Memo)
-	}
+	p.SetValue("memo", pr.Memo)
 }
 
 type TransferRequest struct {
@@ -49,4 +44,8 @@ type WithdrawRequest struct {
 func withWithdraw(p request.Param, wr WithdrawRequest) {
 	withPayment(p, wr.PaymentRequest)
 	p.SetValue("publicKey", wr.PublicKey)
+
+	if wr.AssetId == EOS {
+		p.SetValue("label", wr.Memo)
+	}
 }
