@@ -1,6 +1,7 @@
 package wallet
 
 import (
+	"github.com/fox-one/foxgo/foxerr"
 	"github.com/fox-one/foxgo/request"
 	"github.com/satori/go.uuid"
 )
@@ -48,4 +49,12 @@ func withWithdraw(p request.Param, wr WithdrawRequest) {
 	if wr.AssetId == EOS {
 		p.SetValue("label", wr.Memo)
 	}
+}
+
+func InsufficientBalance(err error) bool {
+	return foxerr.MatchCode(err, 1604)
+}
+
+func AmountTooSmall(err error) bool {
+	return foxerr.MatchCode(err, 1603)
 }

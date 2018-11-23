@@ -22,7 +22,7 @@ func GetWalletStatus(ctx context.Context, token string) (*Status, error) {
 
 	resp := struct {
 		Data struct {
-			Status
+			Status `json:"status"`
 		} `json:"data"`
 	}{}
 
