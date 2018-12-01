@@ -21,7 +21,7 @@ type Asset struct {
 	PublicKey   string  `json:"publicKey,omitempty"`
 	AccountName string  `json:"accountName,omitempty"`
 	AccountTag  string  `json:"accountTag,omitempty"`
-	Price       string  `json:"price"`
+	Price       float64 `json:"price"`
 }
 
 type Assets []Asset
