@@ -22,6 +22,7 @@ type Asset struct {
 	AccountName string  `json:"accountName,omitempty"`
 	AccountTag  string  `json:"accountTag,omitempty"`
 	Price       float64 `json:"price"`
+	Change      float64 `json:"change"`
 }
 
 type Assets []Asset
